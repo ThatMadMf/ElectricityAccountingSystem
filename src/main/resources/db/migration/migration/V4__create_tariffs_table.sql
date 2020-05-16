@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS tarifs (
+CREATE TABLE IF NOT EXISTS tariffs (
     id              SERIAL PRIMARY KEY,
-    tarif_name      VARCHAR (16) NOT NULL,
+    tariff_name     VARCHAR (16) NOT NULL,
     price           DOUBLE NOT NULL
 )
