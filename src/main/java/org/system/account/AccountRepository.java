@@ -30,6 +30,7 @@ public class AccountRepository {
 
     public List<AccountDto> getAllAccountsByLogin(String name) {
         int userId = userRepository.getUserIdByLogin(name);
-        return jdbcTemplate.query(GET_ALL_USER_ACCOUNTS, new Object[]{userId}, accountDtoBeanPropertyRowMapper);
+        List<AccountDto> query = jdbcTemplate.query(GET_ALL_USER_ACCOUNTS, new Object[]{userId}, accountDtoBeanPropertyRowMapper);
+        return query;
     }
 }

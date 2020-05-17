@@ -1,0 +1,1 @@
+SELECT * FROM invoices WHERE invoices.account_id = ?
