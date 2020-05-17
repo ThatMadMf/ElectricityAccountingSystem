@@ -15,6 +15,7 @@ public class InvoiceRepository {
     private static final String GET_INVOICES_BY_ACCOUNT_ID = getSql("get_invoices_by_account_id.sql");
     private static final String GET_INVOICES_BY_USER_ID = getSql("get_invoices_by_user_id.sql");
     private static final String GET_INVOICES_BY_STATE_ID = getSql("get_invoices_by_state_id.sql");
+    private static final String GET_INVOICES_BY_CITY_ID = getSql("get_invoices_by_city_id.sql");
 
     private final JdbcTemplate jdbcTemplate;
     private final UserRepository userRepository;
@@ -41,5 +42,9 @@ public class InvoiceRepository {
 
     public List<InvoiceDto> getAllInvoicesByStateId(int id) {
         return jdbcTemplate.query(GET_INVOICES_BY_STATE_ID, new Object[]{id}, invoiceDtoRowMapper);
+    }
+
+    public List<InvoiceDto> getAllInvoicesByCityId(int id) {
+        return jdbcTemplate.query(GET_INVOICES_BY_CITY_ID, new Object[]{id}, invoiceDtoRowMapper);
     }
 }

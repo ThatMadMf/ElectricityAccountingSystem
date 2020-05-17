@@ -23,4 +23,9 @@ public class AdminController {
     public List<InvoiceDto> getAllInvoicesByState(@PathVariable("id") int id) {
         return invoiceService.getAllInvoicesByStateId(id);
     }
+
+    @GetMapping("invoices-city/{id}")
+    public List<InvoiceDto> getAllInvoicesByCity(@PathVariable("id") int id) {
+        return invoiceService.getAllInvoicesByCityId(id);
+    }
 }

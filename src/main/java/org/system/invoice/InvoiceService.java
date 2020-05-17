@@ -24,4 +24,8 @@ public class InvoiceService {
     public List<InvoiceDto> getAllInvoicesByStateId(int id) {
         return invoiceRepository.getAllInvoicesByStateId(id);
     }
+
+    public List<InvoiceDto> getAllInvoicesByCityId(int id) {
+        return invoiceRepository.getAllInvoicesByCityId(id);
+    }
 }
