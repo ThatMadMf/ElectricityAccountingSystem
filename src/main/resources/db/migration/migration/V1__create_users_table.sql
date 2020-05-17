@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS users (
     patronymic          VARCHAR (32) NOT NULL,
     email               VARCHAR (32) UNIQUE NOT NULL,
     password            VARCHAR (128) NOT NULL,
-    phone               INTEGER NOT NULL,
+    phone               VARCHAR (12) NOT NULL,
     registration_date   DATE NOT NULL
 )
