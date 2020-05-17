@@ -1,4 +1,4 @@
-package org.system.user;
+package org.system.user.dtos;
 
 public class LoginDto {
 

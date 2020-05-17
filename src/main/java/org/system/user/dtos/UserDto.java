@@ -1,10 +1,11 @@
-package org.system.user;
+package org.system.user.dtos;
 
 import java.util.Date;
 
 public class UserDto {
 
     private int id;
+    private String login;
     private String firstName;
     private String secondName;
     private String patronymic;
@@ -12,8 +13,7 @@ public class UserDto {
     private String phone;
     private Date date;
 
-    public UserDto(int id) {
-        this.id = id;
+    public UserDto() {
     }
 
     public int getId() {
@@ -22,6 +22,14 @@ public class UserDto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getFirstName() {
