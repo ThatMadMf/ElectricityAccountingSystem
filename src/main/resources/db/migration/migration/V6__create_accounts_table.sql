@@ -5,5 +5,5 @@ CREATE TABLE IF NOT EXISTS accounts (
     tariff_id       INTEGER REFERENCES tariffs(id) ON DELETE CASCADE,
     street          VARCHAR (32) NOT NULL,
     house           INTEGER NOT NULL,
-    appartament     INTEGER
+    apartment       INTEGER
 )

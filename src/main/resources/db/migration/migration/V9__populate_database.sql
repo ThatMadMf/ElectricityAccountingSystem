@@ -48,7 +48,7 @@ VALUES  ('Пільги', 3),
         ('Економ', 5),
         ('Дорого', 11);
 
-INSERT INTO accounts (user_id, city_id, tariff_id, street, house, appartament)
+INSERT INTO accounts (user_id, city_id, tariff_id, street, house, apartment)
 VALUES  (4, 1, 3, 'Вулиця Києва', 69, 2),
         (5, 1, 3, 'Вулиця Києва', 96, 12),
         (6, 1, 3, 'Вулиця Києва', 66, 98),
