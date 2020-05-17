@@ -1,0 +1,1 @@
+SELECT id from users WHERE users.login = ?
