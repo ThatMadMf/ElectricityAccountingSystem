@@ -14,6 +14,7 @@ public class InvoiceRepository {
     private static final String RESOURCE_PATH = "sql/invoice/";
     private static final String GET_INVOICES_BY_ACCOUNT_ID = getSql("get_invoices_by_account_id.sql");
     private static final String GET_INVOICES_BY_USER_ID = getSql("get_invoices_by_user_id.sql");
+    private static final String GET_INVOICES_BY_STATE_ID = getSql("get_invoices_by_state_id.sql");
 
     private final JdbcTemplate jdbcTemplate;
     private final UserRepository userRepository;
@@ -36,5 +37,9 @@ public class InvoiceRepository {
     public List<InvoiceDto> getAllInvoicesByUserLogin(String login) {
         int userId = userRepository.getUserIdByLogin(login);
         return jdbcTemplate.query(GET_INVOICES_BY_USER_ID, new Object[]{userId}, invoiceDtoRowMapper);
+    }
+
+    public List<InvoiceDto> getAllInvoicesByStateId(int id) {
+        return jdbcTemplate.query(GET_INVOICES_BY_STATE_ID, new Object[]{id}, invoiceDtoRowMapper);
     }
 }
