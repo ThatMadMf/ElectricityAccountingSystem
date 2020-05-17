@@ -16,4 +16,8 @@ public class InvoiceService {
     public List<InvoiceDto> getInvoicesByAccountId(int id) {
         return invoiceRepository.getInvoicesByAccountId(id);
     }
+
+    public List<InvoiceDto> getAllUserInvoices(String login) {
+        return invoiceRepository.getAllInvoicesByUserLogin(login);
+    }
 }

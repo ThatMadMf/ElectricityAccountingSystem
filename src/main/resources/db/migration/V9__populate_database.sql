@@ -62,4 +62,5 @@ VALUES  (4, 1, 3, 'Вулиця Києва', 69, 2),
 INSERT INTO invoices (account_id, electricity_units, invoice_date)
 VALUES  (1, 32.4, current_date - 2),
         (4, 23.1, current_date - 2),
+        (7, 56.1, current_date - 2),
         (8, 44.2, current_date - 2);
