@@ -1,14 +1,14 @@
 package org.system.account;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
-import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("user/accounts")
 public class AccountController {
 
@@ -19,7 +19,8 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<AccountDto> getAllUserAccounts(@AuthenticationPrincipal Principal principal) {
-        return accountService.getAllAccountsByLogin(principal.getName());
+    public String getAllUserAccounts(@AuthenticationPrincipal Principal principal, Model model) {
+        model.addAttribute("accounts", accountService.getAllAccountsByLogin(principal.getName()));
+        return "accounts";
     }
 }

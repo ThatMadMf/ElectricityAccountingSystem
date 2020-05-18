@@ -1,14 +1,14 @@
 package org.system.user;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.system.user.dtos.UserDto;
 
 import java.security.Principal;
 
-@RestController
+@Controller
 @RequestMapping("user")
 public class UserController {
 
@@ -19,7 +19,8 @@ public class UserController {
     }
 
     @GetMapping
-    public UserDto getUserInformation(@AuthenticationPrincipal Principal principal) {
-        return userService.getUserInfo(principal.getName());
+    public String getUserInformation(@AuthenticationPrincipal Principal principal, Model model) {
+        model.addAttribute("user", userService.getUserInfo(principal.getName()));
+        return "user-home";
     }
 }

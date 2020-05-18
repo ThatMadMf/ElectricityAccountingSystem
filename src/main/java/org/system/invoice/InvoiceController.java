@@ -1,15 +1,16 @@
 package org.system.invoice;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("user/invoices")
 public class InvoiceController {
 
@@ -20,13 +21,21 @@ public class InvoiceController {
     }
 
     @GetMapping("account/{id}")
-    public List<InvoiceDto> getInvoicesByAccount(@PathVariable("id") int id) {
-        return invoiceService.getInvoicesByAccountId(id);
+    public String getInvoicesByAccount(@PathVariable("id") int id, Model model) {
+        model.addAttribute("message", "Invoices of account with id" + id);
+        model.addAttribute("link", "user/accounts");
+        model.addAttribute("linkText", "back to accounts");
+        model.addAttribute("invoices", invoiceService.getInvoicesByAccountId(id));
+        return "invoices";
     }
 
     @GetMapping
-    public List<InvoiceDto> getAllUserInvoices(@AuthenticationPrincipal Principal principal) {
-        return invoiceService.getAllUserInvoices(principal.getName());
+    public String getAllUserInvoices(@AuthenticationPrincipal Principal principal, Model model) {
+        model.addAttribute("message", "All invoices given to your profile");
+        model.addAttribute("link", "user");
+        model.addAttribute("linkText", "Back to profile");
+        model.addAttribute("invoices", invoiceService.getAllUserInvoices(principal.getName()));
+        return "invoices";
     }
 
 }

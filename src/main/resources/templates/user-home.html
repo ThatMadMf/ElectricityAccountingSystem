@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
+    <title>User Data</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Your personal data: </h1>
+<a href="/user/accounts">List of accounts that you have linked</a>
+<a href="/user/invoices">List of your invoices</a>
+<div class="container">
+    <div class="table">
+        <div class="row">
+            <div class="cell">First name:</div>
+            <div class="cell" th:text="${user.getFirstName()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Second name:</div>
+            <div class="cell" th:text="${user.getSecondName()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Patronymic:</div>
+            <div class="cell" th:text="${user.getPatronymic()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Email:</div>
+            <div class="cell" th:text="${user.getEmail()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Registration Date:</div>
+            <div class="cell" th:text="${user.getRegistrationDate()}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

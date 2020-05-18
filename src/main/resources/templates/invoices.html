@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
+    <title>User accounts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+<a th:href="@{'/' + ${link}}" th:text="${linkText}"></a>
+<div class="container">
+    <div th:each="invoice: ${invoices}" class="table">
+        <div class="row">
+            <div class="cell">Electricity units used:</div>
+            <div class="cell" th:text="${invoice.getElectricityUnits()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Date when invoice was given:</div>
+            <div class="cell" th:text="${invoice.getInvoiceDate()}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

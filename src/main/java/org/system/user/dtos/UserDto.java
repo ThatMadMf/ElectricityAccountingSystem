@@ -1,6 +1,6 @@
 package org.system.user.dtos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class UserDto {
 
@@ -11,7 +11,7 @@ public class UserDto {
     private String patronymic;
     private String email;
     private String phone;
-    private Date date;
+    private LocalDate registrationDate;
 
     public UserDto() {
     }
@@ -72,11 +72,11 @@ public class UserDto {
         this.phone = phone;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

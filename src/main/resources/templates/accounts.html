@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
+    <title>User accounts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Your accounts: </h1>
+<a href="/user">Back to your profile</a>
+<div class="container">
+    <div th:each="account: ${accounts}" class="table">
+        <div class="row">
+            <div class="cell">Id:</div>
+            <div class="cell" th:text="${account.getId()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Name of tariff</div>
+            <div class="cell" th:text="${account.getTariffName()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">City:</div>
+            <div class="cell" th:text="${account.getCity()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">Street:</div>
+            <div class="cell" th:text="${account.getStreet()}"></div>
+        </div>
+
+        <div class="row">
+            <div class="cell">House:</div>
+            <div class="cell" th:text="${account.getHouse()}"></div>
+        </div>
+
+        <div class="row" th:if="${account.getApartment() != null}">
+            <div class="cell">Apartment:</div>
+            <div class="cell" th:text="${account.getApartment()}"></div>
+        </div>
+
+
+        <div class="row">
+            <a th:href="@{'/user/invoices/account/' + ${account.getId()}}">View invoices of the account</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
