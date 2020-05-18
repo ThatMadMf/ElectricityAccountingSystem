@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
+import org.system.account.AccountDto;
 import org.system.exception.RowNotFoundException;
 import org.system.user.dtos.LoginDto;
 import org.system.user.dtos.UserDto;
@@ -17,6 +18,7 @@ public class UserRepository {
     private static final String GET_LOGIN_DATA = getSql("get_login_data_by_email.sql");
     private static final String GET_ALL_DATA_BY_LOGIN = getSql("get_all_user_data_by_login.sql");
     private static final String GET_USER_ID_BY_LOGIN = getSql("get_user_id_by_login.sql");
+    private static final String ADD_ACCOUNT = getSql("add_account.sql");
 
     private final BeanPropertyRowMapper<LoginDto> loginRowMapper;
     private final BeanPropertyRowMapper<UserDto> userDtoRowMapper;
@@ -46,11 +48,16 @@ public class UserRepository {
     }
 
     public int getUserIdByLogin(String login) {
-            Integer integer = jdbcTemplate.queryForObject(GET_USER_ID_BY_LOGIN, new Object[]{login}, Integer.class);
-            if(integer == null) {
-                throw new RowNotFoundException("Could not find user with this login");
-            }
+        Integer integer = jdbcTemplate.queryForObject(GET_USER_ID_BY_LOGIN, new Object[]{login}, Integer.class);
+        if (integer == null) {
+            throw new RowNotFoundException("Could not find user with this login");
+        }
 
-            return integer;
+        return integer;
+    }
+
+    public void addAccount(AccountDto accountDto) {
+        jdbcTemplate.update(ADD_ACCOUNT, accountDto.getUserId(), accountDto.getCity(), accountDto.getTariffName(),
+                accountDto.getStreet(), accountDto.getHouse(), accountDto.getApartment());
     }
 }

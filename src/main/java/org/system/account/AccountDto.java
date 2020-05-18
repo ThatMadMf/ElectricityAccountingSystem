@@ -3,6 +3,7 @@ package org.system.account;
 public class AccountDto {
 
     private int id;
+    private Integer userId;
     private String city;
     private String tariffName;
     private String street;
@@ -18,6 +19,14 @@ public class AccountDto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getCity() {
