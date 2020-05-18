@@ -1,13 +1,11 @@
 package org.system.admin;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.system.invoice.InvoiceDto;
 import org.system.invoice.InvoiceService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("admin")
@@ -19,13 +17,26 @@ public class AdminController {
         this.invoiceService = invoiceService;
     }
 
+    @GetMapping
+    public String getAdminPanel(Model model) {
+        return "admin";
+    }
+
     @GetMapping("invoices-state/{id}")
-    public List<InvoiceDto> getAllInvoicesByState(@PathVariable("id") int id) {
-        return invoiceService.getAllInvoicesByStateId(id);
+    public String getAllInvoicesByState(@PathVariable("id") int id, Model model) {
+        model.addAttribute("message", "All invoices in state with id " + id);
+        model.addAttribute("link", "admin");
+        model.addAttribute("linkText", "Back to admin");
+        model.addAttribute("invoices", invoiceService.getAllInvoicesByStateId(id));
+        return "invoices";
     }
 
     @GetMapping("invoices-city/{id}")
-    public List<InvoiceDto> getAllInvoicesByCity(@PathVariable("id") int id) {
-        return invoiceService.getAllInvoicesByCityId(id);
+    public String getAllInvoicesByCity(@PathVariable("id") int id, Model model) {
+        model.addAttribute("message", "All invoices in city with id " + id);
+        model.addAttribute("link", "admin");
+        model.addAttribute("linkText", "Back to admin");
+        model.addAttribute("invoices", invoiceService.getAllInvoicesByCityId(id));
+        return "invoices";
     }
 }

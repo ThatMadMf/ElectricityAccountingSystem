@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}"/>
+    <title>Admin panel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Admin panel: </h1>
+<label> Enter city id
+    <input type="number" id="city-id">
+</label>
+<input type="button" onclick="location.href='admin/invoices-city/' + document.getElementById('city-id').value" value="go"><br>
+<label> Enter state id
+    <input type="number" id="state-id">
+</label>
+<input type="button" onclick="location.href='admin/invoices-state/' + document.getElementById('state-id').value" value="go">
+</body>
+</html>

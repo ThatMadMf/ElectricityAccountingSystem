@@ -1,12 +1,12 @@
 package org.system.invoice;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class InvoiceDto {
 
     private int accountId;
     private double electricityUnits;
-    private Date invoiceDate;
+    private LocalDate invoiceDate;
 
     public InvoiceDto() {
     }
@@ -27,11 +27,11 @@ public class InvoiceDto {
         this.electricityUnits = electricityUnits;
     }
 
-    public Date getInvoiceDate() {
+    public LocalDate getInvoiceDate() {
         return invoiceDate;
     }
 
-    public void setInvoiceDate(Date invoiceDate) {
+    public void setInvoiceDate(LocalDate invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 }
