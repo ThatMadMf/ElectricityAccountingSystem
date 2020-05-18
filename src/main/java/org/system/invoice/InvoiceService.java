@@ -28,4 +28,8 @@ public class InvoiceService {
     public List<InvoiceDto> getAllInvoicesByCityId(int id) {
         return invoiceRepository.getAllInvoicesByCityId(id);
     }
+
+    public void addInvoice(InvoiceDto invoiceDto) {
+        invoiceRepository.addInvoice(invoiceDto);
+    }
 }

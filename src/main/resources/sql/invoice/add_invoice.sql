@@ -1,0 +1,1 @@
+INSERT INTO invoices (account_id, electricity_units, invoice_date) VALUES (?, ?, ?)

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/public/assets/css/style.css}"/>
+    <title th:if="${success}">Order added successfully</title>
+    <title th:unless="${success}">Invalid input</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h2 th:if="${success}">Record added to the system</h2>
+    <h2 th:unless="${success}">Error while adding new order <br>Invalid input</h2>
+</div>
+</body>
+<a href="/user">Go back</a>
+</html>

@@ -2,9 +2,8 @@ package org.system.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.system.invoice.InvoiceDto;
 import org.system.invoice.InvoiceService;
 
 @Controller
@@ -38,5 +37,20 @@ public class AdminController {
         model.addAttribute("linkText", "Back to admin");
         model.addAttribute("invoices", invoiceService.getAllInvoicesByCityId(id));
         return "invoices";
+    }
+
+    @GetMapping("new-invoice")
+    public String getNewInvoiceForm(Model model) {
+        model.addAttribute("invoice", new InvoiceDto());
+        return "new-invoice";
+    }
+
+    @PostMapping("new-invoice")
+    public String processNewInvoice(@ModelAttribute InvoiceDto invoiceDto, Model model) {
+        invoiceService.addInvoice(invoiceDto);
+
+        model.addAttribute("success", true);
+
+        return "submission-result";
     }
 }
