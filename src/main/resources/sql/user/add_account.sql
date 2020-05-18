@@ -1,9 +1,4 @@
 INSERT INTO accounts (user_id, city_id, tariff_id, street, house, apartment)
-VALUES  (
-            ?,
-            SELECT cities.id FROM cities WHERE city_name = ?,
-            SELECT tariffs.id FROM tariffs WHERE tariff_name = ?,
-            ?,
-            ?,
-            ?
-        )
+    SELECT ?, c.id, t.id, ?, ?, ?
+    FROM cities AS c, tariffs AS t
+    WHERE c.city_name = ? AND t.tariff_name = ?;

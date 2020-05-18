@@ -57,7 +57,7 @@ public class UserRepository {
     }
 
     public void addAccount(AccountDto accountDto) {
-        jdbcTemplate.update(ADD_ACCOUNT, accountDto.getUserId(), accountDto.getCity(), accountDto.getTariffName(),
-                accountDto.getStreet(), accountDto.getHouse(), accountDto.getApartment());
+        jdbcTemplate.update(ADD_ACCOUNT, accountDto.getUserId(), accountDto.getStreet(), accountDto.getHouse(),
+                accountDto.getApartment(), accountDto.getCity(), accountDto.getTariffName());
     }
 }
