@@ -8,6 +8,7 @@
 <body>
 <h1 th:text="${message}"></h1>
 <a th:href="@{'/' + ${link}}" th:text="${linkText}"></a>
+<h1 th:if="${invoices.size()} == 0">No rows with the id</h1>
 <div class="container">
     <div th:each="invoice: ${invoices}" class="table">
         <div class="row">

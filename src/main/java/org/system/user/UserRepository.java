@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import org.system.account.AccountDto;
+import org.system.exception.NoRowUpdatedException;
 import org.system.exception.RowNotFoundException;
 import org.system.user.dtos.LoginDto;
 import org.system.user.dtos.UserDto;
@@ -57,7 +58,10 @@ public class UserRepository {
     }
 
     public void addAccount(AccountDto accountDto) {
-        jdbcTemplate.update(ADD_ACCOUNT, accountDto.getUserId(), accountDto.getStreet(), accountDto.getHouse(),
+        int rowNum = jdbcTemplate.update(ADD_ACCOUNT, accountDto.getUserId(), accountDto.getStreet(), accountDto.getHouse(),
                 accountDto.getApartment(), accountDto.getCity(), accountDto.getTariffName());
+        if(rowNum != 1) {
+            throw new NoRowUpdatedException("No rows updated");
+        }
     }
 }

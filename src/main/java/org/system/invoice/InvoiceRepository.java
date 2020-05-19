@@ -3,6 +3,7 @@ package org.system.invoice;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.system.exception.NoRowUpdatedException;
 import org.system.user.UserRepository;
 import org.system.util.ResourceReader;
 
@@ -51,7 +52,10 @@ public class InvoiceRepository {
     }
 
     public void addInvoice(InvoiceDto invoiceDto) {
-        jdbcTemplate.update(ADD_INVOICE, invoiceDto.getAccountId(), invoiceDto.getElectricityUnits(),
+        int rowsUpdated = jdbcTemplate.update(ADD_INVOICE, invoiceDto.getAccountId(), invoiceDto.getElectricityUnits(),
                 LocalDate.now());
+        if (rowsUpdated != 1) {
+            throw new NoRowUpdatedException("Could not add invoice");
+        }
     }
 }

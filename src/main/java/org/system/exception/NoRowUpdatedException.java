@@ -1,6 +1,7 @@
-package org.system.user;
+package org.system.exception;
 
-public class NoRowUpdatedException extends Throwable {
-    public NoRowUpdatedException(String no_rows_updated) {
+public class NoRowUpdatedException extends RuntimeException {
+    public NoRowUpdatedException(String message) {
+        super(message);
     }
 }
